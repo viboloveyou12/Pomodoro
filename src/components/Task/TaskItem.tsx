@@ -23,7 +23,7 @@ const TaskItem = ({ title, total, complete, checked, isCurrent }: TaskItemProps)
         <div>
             {!isEditMode ? (
                 <div
-                    className={`flex flex-row justify-between rounded-lg my-4 p-4 ${
+                    className={`flex flex-row justify-between rounded-lg my-4 p-4 cursor-move ${
                         isCurrent ? 'bg-dark-gray text-white' : 'bg-white'
                     }`}
                 >
@@ -35,7 +35,13 @@ const TaskItem = ({ title, total, complete, checked, isCurrent }: TaskItemProps)
                         <span>
                             {total}/{complete}
                         </span>
-                        <button className="hover:opacity-65" title="action-edit" onClick={() => setIsEditMode(true)}>
+                        <button
+                            className="hover:opacity-65"
+                            title="action-edit"
+                            onMouseDown={() => {
+                                setIsEditMode(true)
+                            }}
+                        >
                             <PencilIcon className="w-4" fill={isCurrent ? 'white' : 'black'} />
                         </button>
                     </div>
